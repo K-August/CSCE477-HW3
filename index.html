@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Basic Page</title>
+</head>
+<body>
+
+    <h1>Vulnerable Login</h1>
+
+    <form id="loginForm" novalidate>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="message"></div>
+
+    <script>
+        const form = document.getElementById("loginForm");
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            if (email === "" || password === "") {
+                alert("You cannot submit an empty field.");
+                return;
+            }
+
+            if (!email.includes("@")) {
+                alert("Please enter a valid email address.");
+                return;
+            }
+
+            if (password.length < 8) {
+                alert("Password must be at least 8 characters long.");
+                return;
+            }
+
+            // Login logic would go here
+
+            document.getElementById("message").innerHTML = "Login failed for user: " + email;
+
+            // email: <img src=https://static.wikia.nocookie.net/veggietales-the-ultimate-veggiepedia/images/e/ec/Bobprofile.jpg/revision/latest?cb=20161227190344 alert("@")>
+        });
+    </script>
+
+</body>
+</html>
